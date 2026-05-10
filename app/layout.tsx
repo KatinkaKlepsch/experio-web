@@ -18,15 +18,15 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Experio — Et kurateret kulturelt abonnement",
+  title: "Experio — A curated cultural membership",
   description:
-    "Book koncerter, biograf, stand-up, museer, vinsmagninger og workshops i København. Ingen binding.",
+    "Book concerts, cinema, stand-up, museums, wine tastings, and workshops in Copenhagen. One monthly membership. No commitment.",
   metadataBase: new URL("https://experio-web.pages.dev"),
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="da" className={`${playfair.variable} ${dmSans.variable}`}>
+    <html lang="en" className={`${playfair.variable} ${dmSans.variable}`}>
       <body className="bg-bg font-sans text-ink antialiased">{children}</body>
     </html>
   );

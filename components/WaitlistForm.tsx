@@ -6,10 +6,6 @@
 // Env vars (set in .env.local + Cloudflare Pages settings):
 //   - NEXT_PUBLIC_SUPABASE_URL
 //   - NEXT_PUBLIC_SUPABASE_ANON_KEY
-//
-// On success: shows the user's position number with a magazine-y reveal.
-// On already-on-list: same success state, with subtle "already in" copy.
-// On error: shows error inline, keeps form so user can retry.
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
@@ -19,8 +15,8 @@ import { z } from "zod";
 const schema = z.object({
   email: z
     .string()
-    .min(1, "Skriv din email.")
-    .email("Det her ligner ikke en gyldig email."),
+    .min(1, "Please enter your email.")
+    .email("That doesn't look like a valid email."),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -52,7 +48,7 @@ export default function WaitlistForm() {
 
     if (!supabaseUrl || !anonKey) {
       setSubmitError(
-        "Vores formular er ikke korrekt konfigureret. Skriv til hello@myexperio.com.",
+        "Our form isn't configured correctly. Please email hello@myexperio.com.",
       );
       return;
     }
@@ -71,9 +67,9 @@ export default function WaitlistForm() {
 
       if (!response.ok) {
         if (data.error === "invalid_email") {
-          setSubmitError("Den email kan vi ikke bruge — tjek den igen.");
+          setSubmitError("We can't use that email — please double-check it.");
         } else {
-          setSubmitError("Noget gik galt. Prøv igen om lidt.");
+          setSubmitError("Something went wrong. Please try again in a moment.");
         }
         return;
       }
@@ -83,7 +79,7 @@ export default function WaitlistForm() {
         alreadyOnList: !!data.alreadyOnList,
       });
     } catch {
-      setSubmitError("Vi kunne ikke nå serveren. Tjek din forbindelse og prøv igen.");
+      setSubmitError("We couldn't reach the server. Check your connection and try again.");
     }
   };
 
@@ -91,12 +87,12 @@ export default function WaitlistForm() {
     return (
       <div className="mx-auto mt-10 max-w-md rounded-3xl border border-accent/40 bg-card px-8 py-10 text-center">
         <div className="font-sans text-[11px] font-medium uppercase tracking-[2px] text-accent">
-          {success.alreadyOnList ? "Du står allerede på listen" : "Du er nu inde"}
+          {success.alreadyOnList ? "You're already on the list" : "You're in"}
         </div>
         {success.position !== null && (
           <div className="mt-6">
             <div className="font-sans text-[11px] uppercase tracking-wider text-ink-muted">
-              Din position
+              Your position
             </div>
             <div className="mt-1 font-display text-6xl font-black leading-none text-ink">
               #{success.position}
@@ -105,12 +101,12 @@ export default function WaitlistForm() {
         )}
         <p className="mt-6 font-display text-lg italic text-ink-soft">
           {success.alreadyOnList
-            ? "Vi ses i september."
-            : "Vi har sendt en velkomst-mail. Tjek din indbakke."}
+            ? "See you in September."
+            : "We've sent a welcome email. Check your inbox."}
         </p>
         <p className="mt-4 font-sans text-xs text-ink-muted">
-          Mailen er sendt fra <span className="text-ink">onboarding@resend.dev</span> —
-          tjek spam hvis du ikke ser den indenfor et minut.
+          Sent from <span className="text-ink">onboarding@resend.dev</span> — check spam
+          if you don't see it within a minute.
         </p>
       </div>
     );
@@ -130,7 +126,7 @@ export default function WaitlistForm() {
             <input
               {...field}
               type="email"
-              placeholder="din@email.dk"
+              placeholder="you@email.com"
               aria-label="Email"
               autoComplete="email"
               inputMode="email"
@@ -144,7 +140,7 @@ export default function WaitlistForm() {
           disabled={isSubmitting}
           className="rounded-full bg-ink px-7 py-3.5 font-sans font-medium text-card transition-transform hover:scale-[1.02] disabled:cursor-wait disabled:opacity-60"
         >
-          {isSubmitting ? "Sender…" : "Ansøg om adgang"}
+          {isSubmitting ? "Sending…" : "Apply for access"}
         </button>
       </div>
 
@@ -160,8 +156,8 @@ export default function WaitlistForm() {
       )}
 
       <p className="mt-6 text-center font-sans text-xs leading-relaxed text-ink-muted">
-        Du modtager ingen spam. Et velkomst-mail og et par opdateringer frem til launch
-        — fra et menneske, ikke noreply@.
+        No spam. A welcome email and a few updates before launch — from a human, not
+        noreply@.
       </p>
     </form>
   );
