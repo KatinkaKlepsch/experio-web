@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+/*
+  Brand tokens — mirror docs/CVI.md from main Experio repo.
+  Tailwind v4 reads tokens from this @theme block. Each --color-* generates
+  utility classes (bg-*, text-*, border-*).
+*/
+@theme {
+  /* Surfaces */
+  --color-bg: #f0ede6;
+  --color-bg-soft: #e8e2d8;
+  --color-bg-muted: #d4ccbe;
+  --color-card: #faf9f6;
+
+  /* Text — three hierarchical levels per CVI */
+  --color-ink: #1a1a1a;
+  --color-ink-soft: #5a5040;
+  --color-ink-muted: #8a7f72;
+
+  /* Accents — gold is sparing, max one per screen */
+  --color-accent: #c8a96e;
+  --color-accent-soft: #e8c98e;
+
+  /* Lines / dividers */
+  --color-line: #e8e2d8;
+
+  /* Dark surfaces (for hero gradients on event detail etc.) */
+  --color-dark-bg: #1a1209;
+  --color-dark-card: #241810;
+
+  /* Fonts — variables set by next/font/google in app/layout.tsx */
+  --font-display: var(--font-playfair), Georgia, serif;
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
+}
+
+/* Base body — beige canvas, ink text, anti-aliasing for crisp serif headings */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
