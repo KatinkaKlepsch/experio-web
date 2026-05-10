@@ -90,9 +90,8 @@ export default function Home() {
             Stop <span className="italic text-accent">planning</span> culture.<br />
             Start <span className="italic text-accent">having</span> it.
           </h1>
-          <p className="mx-auto mt-8 max-w-2xl font-display text-lg italic leading-relaxed text-ink-soft md:text-xl">
-            One monthly subscription. Decide on the way home from work, show up, enjoy.
-            Concerts, cinema, museums, wine tastings, workshops — all included.
+          <p className="mx-auto mt-8 max-w-xl font-display text-lg italic leading-relaxed text-ink-soft md:text-xl">
+            One monthly subscription. Decide tonight, show up, enjoy.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-3">
             <a
@@ -103,7 +102,12 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="mt-20 flex justify-center">
+          {/* Discrete trust line — fills the authority gap left by removing founder voice. */}
+          <p className="mt-8 font-sans text-[11px] uppercase tracking-[2px] text-ink-muted">
+            Built in Copenhagen  ·  by event organisers
+          </p>
+
+          <div className="mt-16 flex justify-center">
             <CityGrid size={56} className="text-ink opacity-80" />
           </div>
         </div>
@@ -245,6 +249,43 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── 5b. WHAT TO EXPECT — generic teaser, no specific venues named yet ─── */}
+      <section className="bg-dark-bg px-6 py-20 text-card">
+        <div className="mx-auto max-w-5xl">
+          <div className="text-center">
+            <p className="font-sans text-[11px] font-medium uppercase tracking-[2px] text-accent">
+              What to expect
+            </p>
+            <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-card md:text-5xl">
+              A different <span className="italic text-accent">evening</span>, every week.
+            </h2>
+          </div>
+
+          <div className="mt-14 grid grid-cols-2 gap-4 md:grid-cols-4">
+            {[
+              { emoji: "🎷", line: "A Friday jazz set" },
+              { emoji: "🏛", line: "A late evening at a museum" },
+              { emoji: "🍷", line: "A Sunday wine tasting" },
+              { emoji: "🎤", line: "A Tuesday stand-up night" },
+            ].map((item) => (
+              <div
+                key={item.line}
+                className="rounded-2xl border border-white/10 bg-dark-card p-6 text-center"
+              >
+                <div className="text-3xl">{item.emoji}</div>
+                <p className="mt-3 font-display text-base font-bold leading-tight text-card">
+                  {item.line}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-10 text-center font-sans text-sm italic text-card/60">
+            Specific venues announced as we sign them.
+          </p>
+        </div>
+      </section>
+
       {/* ─── 6. PRICING ARGUMENT — Godo-inspired layout (visual on left, math on right) ─── */}
       <section className="px-6 py-20">
         <div className="mx-auto max-w-5xl">
@@ -261,17 +302,17 @@ export default function Home() {
           </div>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 md:items-stretch">
-            {/* Left: alternative cost build-up */}
+            {/* Left: what four nights out costs today (reframed from "buying individually") */}
             <div className="rounded-3xl border border-line bg-card p-8">
               <p className="font-sans text-[11px] font-medium uppercase tracking-[1.5px] text-ink-muted">
-                Buying tickets individually
+                What four nights out costs today
               </p>
               <ul className="mt-6 divide-y divide-line">
                 {[
-                  { event: "Cinema", price: 120 },
-                  { event: "Stand-up", price: 130 },
-                  { event: "Concert", price: 350 },
-                  { event: "Theater", price: 425 },
+                  { event: "A film at the cinema", price: 120 },
+                  { event: "A stand-up night", price: 130 },
+                  { event: "A live concert", price: 350 },
+                  { event: "An evening at the theatre", price: 425 },
                 ].map((row) => (
                   <li
                     key={row.event}
@@ -286,7 +327,7 @@ export default function Home() {
               </ul>
               <div className="mt-4 flex items-baseline justify-between border-t-2 border-ink pt-4">
                 <span className="font-sans text-sm uppercase tracking-wider text-ink-muted">
-                  Four events
+                  One good week
                 </span>
                 <span className="font-display text-2xl font-bold text-ink-muted line-through">
                   1,025 DKK
@@ -294,10 +335,10 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right: Experio price card */}
+            {/* Right: Experio price card — escalating value lines */}
             <div className="flex flex-col justify-center rounded-3xl bg-ink p-8 text-center">
               <p className="font-sans text-[11px] font-medium uppercase tracking-[2px] text-accent-soft">
-                Experio
+                With Experio
               </p>
               <p className="mt-4 font-display text-7xl font-black leading-none text-accent md:text-8xl">
                 459
@@ -306,9 +347,9 @@ export default function Home() {
                 DKK / month
               </p>
               <div className="mt-6 space-y-2 font-sans text-sm text-card/80">
-                <p>No commitment</p>
-                <p>Bring a guest (small per-event fee)</p>
-                <p>Discover something new every week</p>
+                <p>Once a week — already ahead.</p>
+                <p>Twice a week — already winning.</p>
+                <p>Every week — a different city.</p>
               </div>
             </div>
           </div>
@@ -328,27 +369,17 @@ export default function Home() {
           <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-ink md:text-5xl">
             Join the <span className="italic text-accent">waitlist</span>.
           </h2>
+          <p className="mx-auto mt-6 max-w-lg font-sans text-base leading-relaxed text-ink-soft">
+            Two questions help us choose the right venues for your taste — then your email.
+            Follow along on Instagram while we build it.
+          </p>
 
-          {/* Founder note — adds liking + authority. Subtle, editorial, not promotional */}
-          <div className="mx-auto mt-8 flex max-w-lg items-start gap-4 rounded-2xl border border-line bg-bg p-5 text-left">
-            <div
-              className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-accent font-display text-xl font-black text-ink"
-              aria-hidden="true"
-            >
-              K
-            </div>
-            <div>
-              <p className="font-sans text-[11px] font-medium uppercase tracking-[1.5px] text-ink-muted">
-                From the founder
-              </p>
-              <p className="mt-2 font-display text-base italic leading-relaxed text-ink-soft">
-                &ldquo;I&rsquo;m building Experio with the city&rsquo;s venues and its first
-                members. The two questions below help us choose the right places, the right
-                events, the right rhythm. Follow along while we build it.&rdquo;
-              </p>
-              <p className="mt-2 font-sans text-xs text-ink-muted">— Katinka, founder</p>
-            </div>
-          </div>
+          {/* Loss aversion — non-pricing scarcity. First wave shapes the experience;
+              later waves get the city someone else built. */}
+          <p className="mx-auto mt-4 max-w-md font-display text-sm italic text-ink">
+            The first wave opens in September. They help shape which venues we sign.
+            The next wave joins what they built.
+          </p>
 
           <WaitlistForm />
         </div>

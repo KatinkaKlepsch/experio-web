@@ -40,8 +40,12 @@ const FREQUENCIES = [
 ] as const;
 
 const schema = z.object({
-  preferredCategory: z.string().min(1, "Pick the type that excites you most."),
-  eventsPerMonth: z.string().min(1, "Pick the option closest to you."),
+  preferredCategories: z
+    .array(z.string())
+    .min(1, "Pick at least one — you can choose several."),
+  eventsPerMonth: z
+    .array(z.string())
+    .min(1, "Pick the option(s) that fit you — you can choose more than one."),
   email: z
     .string()
     .min(1, "Please enter your email.")
@@ -71,8 +75,12 @@ export default function WaitlistForm() {
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
     mode: "onBlur",
-    defaultValues: { preferredCategory: "", eventsPerMonth: "", email: "" },
+    defaultValues: { preferredCategories: [], eventsPerMonth: [], email: "" },
   });
+
+  // Toggle helper — adds value if not in array, removes if present.
+  const toggle = (current: string[], value: string): string[] =>
+    current.includes(value) ? current.filter((v) => v !== value) : [...current, value];
 
   const onSubmit = async (values: FormValues) => {
     setSubmitError(null);
@@ -97,8 +105,10 @@ export default function WaitlistForm() {
         body: JSON.stringify({
           email: values.email,
           source: "landing",
-          preferred_category: values.preferredCategory,
-          events_per_month: values.eventsPerMonth,
+          // Send arrays as comma-separated strings — Edge Function accepts either,
+          // and DB column is text. Easy to split for analytics later.
+          preferred_category: values.preferredCategories.join(","),
+          events_per_month: values.eventsPerMonth.join(","),
         }),
       });
 
@@ -233,29 +243,34 @@ export default function WaitlistForm() {
         Two quick questions — then your email.
       </p>
 
-      {/* Question 1 — category preference */}
+      {/* Question 1 — category preference (multi-select) */}
       <fieldset className="mt-8">
         <legend className="font-sans text-[11px] font-medium uppercase tracking-[1.5px] text-ink-muted">
-          01 · What kind of culture excites you most?
+          01 · What kind of culture excites you most?{" "}
+          <span className="text-ink-muted/70 normal-case tracking-normal">
+            Pick as many as you like
+          </span>
         </legend>
         <Controller
           control={control}
-          name="preferredCategory"
+          name="preferredCategories"
           render={({ field }) => (
             <div className="mt-3 flex flex-wrap gap-2">
               {CATEGORIES.map((cat) => {
-                const selected = field.value === cat.value;
+                const selected = field.value.includes(cat.value);
                 return (
                   <button
                     type="button"
                     key={cat.value}
-                    onClick={() => field.onChange(cat.value)}
+                    onClick={() => field.onChange(toggle(field.value, cat.value))}
+                    aria-pressed={selected}
                     className={`rounded-full border px-4 py-2 font-sans text-sm transition-all ${
                       selected
                         ? "border-ink bg-ink text-card"
                         : "border-line bg-card text-ink-soft hover:border-accent"
                     }`}
                   >
+                    {selected && <span aria-hidden="true">✓ </span>}
                     {cat.label}
                   </button>
                 );
@@ -263,17 +278,20 @@ export default function WaitlistForm() {
             </div>
           )}
         />
-        {errors.preferredCategory && (
+        {errors.preferredCategories && (
           <p className="mt-2 font-sans text-sm text-ink-soft" role="alert">
-            {errors.preferredCategory.message}
+            {errors.preferredCategories.message}
           </p>
         )}
       </fieldset>
 
-      {/* Question 2 — frequency */}
+      {/* Question 2 — frequency (multi-select) */}
       <fieldset className="mt-8">
         <legend className="font-sans text-[11px] font-medium uppercase tracking-[1.5px] text-ink-muted">
-          02 · How often do you go to cultural events today?
+          02 · How often do you go to cultural events today?{" "}
+          <span className="text-ink-muted/70 normal-case tracking-normal">
+            Multiple OK
+          </span>
         </legend>
         <Controller
           control={control}
@@ -281,19 +299,21 @@ export default function WaitlistForm() {
           render={({ field }) => (
             <div className="mt-3 flex flex-col gap-2">
               {FREQUENCIES.map((freq) => {
-                const selected = field.value === freq.value;
+                const selected = field.value.includes(freq.value);
                 return (
                   <button
                     type="button"
                     key={freq.value}
-                    onClick={() => field.onChange(freq.value)}
-                    className={`rounded-2xl border px-5 py-3 text-left font-sans text-sm transition-all ${
+                    onClick={() => field.onChange(toggle(field.value, freq.value))}
+                    aria-pressed={selected}
+                    className={`flex items-center gap-3 rounded-2xl border px-5 py-3 text-left font-sans text-sm transition-all ${
                       selected
                         ? "border-ink bg-ink text-card"
                         : "border-line bg-card text-ink-soft hover:border-accent"
                     }`}
                   >
-                    {freq.label}
+                    <span aria-hidden="true">{selected ? "✓" : "○"}</span>
+                    <span>{freq.label}</span>
                   </button>
                 );
               })}
