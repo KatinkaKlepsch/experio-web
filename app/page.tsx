@@ -1,6 +1,8 @@
 // Experio waitlist landing — first draft.
 // Source of truth for messaging: docs/Marketing strategy.html (in main Experio repo).
 // Source of truth for visual: docs/CVI.md.
+
+import WaitlistForm from "@/components/WaitlistForm";
 //
 // Sections in order:
 //  1. Header (sticky, lightweight)
@@ -375,32 +377,9 @@ export default function Home() {
             ventelisten — så hører du fra os først.
           </p>
 
-          {/* Form — disabled placeholder. Phase 5 replaces with a "use client"
-              <WaitlistForm /> component that wires Supabase + Resend. */}
-          <form
-            className="mx-auto mt-10 flex max-w-md flex-col gap-3 sm:flex-row"
-            action="#"
-          >
-            <input
-              type="email"
-              placeholder="din@email.dk"
-              disabled
-              aria-label="Email"
-              className="flex-1 rounded-full border border-line bg-card px-5 py-3.5 font-sans text-base text-ink placeholder-ink-muted/60 disabled:cursor-not-allowed disabled:opacity-60"
-            />
-            <button
-              type="submit"
-              disabled
-              className="cursor-not-allowed rounded-full bg-ink/40 px-7 py-3.5 font-sans font-medium text-card"
-            >
-              Kommer snart
-            </button>
-          </form>
-
-          <p className="mt-6 font-sans text-xs leading-relaxed text-ink-muted">
-            Du modtager ingen spam. Et velkomst-mail og et par opdateringer frem til launch
-            — fra et menneske, ikke noreply@.
-          </p>
+          {/* Form — wires to Supabase Edge Function `waitlist-signup` which
+              inserts into waitlist_signups and sends a Resend welcome email. */}
+          <WaitlistForm />
         </div>
       </section>
 
