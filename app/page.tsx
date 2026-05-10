@@ -82,17 +82,17 @@ export default function Home() {
         </div>
       </header>
 
-      {/* ─── 2. HERO ─── */}
+      {/* ─── 2. HERO — anti-pattern headline ─── */}
       <section id="top" className="relative overflow-hidden px-6 pb-24 pt-20 md:pt-32">
         <div className="mx-auto max-w-4xl text-center">
           <Eyebrow>Copenhagen · Est. 2026</Eyebrow>
           <h1 className="mt-6 font-display text-5xl font-black leading-[1.05] tracking-tight text-ink md:text-7xl">
-            Part of Copenhagen&rsquo;s<br />
-            <span className="italic text-accent">culture</span>.
+            Stop <span className="italic text-accent">planning</span> culture.<br />
+            Start <span className="italic text-accent">having</span> it.
           </h1>
-          <p className="mx-auto mt-8 max-w-xl font-display text-lg italic leading-relaxed text-ink-soft md:text-xl">
-            One monthly membership. Included access to concerts, cinema, stand-up,
-            museums, wine tastings, and workshops. Be spontaneous. Try new things.
+          <p className="mx-auto mt-8 max-w-2xl font-display text-lg italic leading-relaxed text-ink-soft md:text-xl">
+            One monthly subscription. Decide on the way home from work, show up, enjoy.
+            Concerts, cinema, museums, wine tastings, workshops — all included.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-3">
             <a
@@ -115,12 +115,11 @@ export default function Home() {
           <div className="mx-auto max-w-3xl text-center">
             <Eyebrow>What it is</Eyebrow>
             <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-ink md:text-5xl">
-              A subscription for{" "}
-              <span className="italic text-accent">everything</span> Copenhagen has to offer.
+              Like Spotify changed your music.<br />
+              Experio changes your <span className="italic text-accent">nights</span>.
             </h2>
             <p className="mx-auto mt-6 max-w-xl font-sans text-base leading-relaxed text-ink-soft">
-              The way Spotify changed how you listen to music. Experio changes how you
-              experience the city.
+              One monthly subscription. The city's culture, ready to discover.
             </p>
           </div>
 
@@ -134,15 +133,15 @@ export default function Home() {
               },
               {
                 eyebrow: "Spontaneous",
-                title: "Less planning.\nMore being there.",
+                title: "Tonight,\nnot two months out.",
                 body:
-                  "No need for timely research. Decide on the way home from work, see what's on tonight, and just go.",
+                  "Decide on the way home from work. Book what's just around the corner.",
               },
               {
                 eyebrow: "Social",
                 title: "Hang out\naround culture.",
                 body:
-                  "Skip the predictable coffee or walk. Meet up at a museum, share a wine tasting, discover new ways to spend time together.",
+                  "Beyond coffee and walks. Meet up at a museum, share a wine tasting, discover new ways to spend time together.",
               },
             ].map((pillar) => (
               <article
@@ -179,7 +178,7 @@ export default function Home() {
             {[
               {
                 num: "01",
-                title: "Find what you want",
+                title: "See tonight's pick",
                 body: "Filter by category, see the top picks for tonight or this week. Curated to fit your taste.",
               },
               {
@@ -216,8 +215,8 @@ export default function Home() {
           <div className="text-center">
             <Eyebrow>What's included</Eyebrow>
             <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-ink md:text-5xl">
-              Six categories. Venues and events all over{" "}
-              <span className="italic text-accent">Copenhagen</span>.
+              Six categories.<br />
+              The <span className="italic text-accent">Copenhagen</span> most people don't know.
             </h2>
           </div>
 
@@ -252,11 +251,12 @@ export default function Home() {
           <div className="mx-auto max-w-3xl text-center">
             <Eyebrow>The math</Eyebrow>
             <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-ink md:text-5xl">
-              One event a week with Experio?<br />
-              <span className="italic text-accent">Half the price</span> of buying tickets.
+              Go out once a week.<br />
+              You&rsquo;re <span className="italic text-accent">already ahead</span>.
             </h2>
-            <p className="mx-auto mt-5 max-w-xl font-sans text-base text-ink-soft">
-              And a lot more possibilities than just four.
+            <p className="mx-auto mt-5 max-w-xl font-sans text-base leading-relaxed text-ink-soft">
+              Like a gym membership for culture. Use it once and it pays for itself. Use it
+              weekly and it changes how you live in Copenhagen.
             </p>
           </div>
 
@@ -328,10 +328,27 @@ export default function Home() {
           <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-ink md:text-5xl">
             Join the <span className="italic text-accent">waitlist</span>.
           </h2>
-          <p className="mx-auto mt-6 max-w-lg font-sans text-base leading-relaxed text-ink-soft">
-            We're building this with the first members from day one. Help us shape it —
-            then come along when it opens.
-          </p>
+
+          {/* Founder note — adds liking + authority. Subtle, editorial, not promotional */}
+          <div className="mx-auto mt-8 flex max-w-lg items-start gap-4 rounded-2xl border border-line bg-bg p-5 text-left">
+            <div
+              className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-accent font-display text-xl font-black text-ink"
+              aria-hidden="true"
+            >
+              K
+            </div>
+            <div>
+              <p className="font-sans text-[11px] font-medium uppercase tracking-[1.5px] text-ink-muted">
+                From the founder
+              </p>
+              <p className="mt-2 font-display text-base italic leading-relaxed text-ink-soft">
+                &ldquo;I&rsquo;m building Experio with the city&rsquo;s venues and its first
+                members. The two questions below help us choose the right places, the right
+                events, the right rhythm. Follow along while we build it.&rdquo;
+              </p>
+              <p className="mt-2 font-sans text-xs text-ink-muted">— Katinka, founder</p>
+            </div>
+          </div>
 
           <WaitlistForm />
         </div>
