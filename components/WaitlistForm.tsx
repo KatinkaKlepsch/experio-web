@@ -38,9 +38,10 @@ const FREQUENCIES = [
 ] as const;
 
 const schema = z.object({
-  // Both questions are now OPTIONAL (default empty array — no min)
-  preferredCategories: z.array(z.string()).default([]),
-  eventsPerMonth: z.array(z.string()).default([]),
+  // Both questions are now OPTIONAL — empty arrays are valid (no .min() check).
+  // Defaults are set in defaultValues below, so the form always has these fields.
+  preferredCategories: z.array(z.string()),
+  eventsPerMonth: z.array(z.string()),
   // Email is the only required field
   email: z
     .string()
