@@ -3,16 +3,14 @@
 // Waitlist form — client component (interactivity not allowed in static export
 // Server Components). POSTs to the Supabase Edge Function `waitlist-signup`.
 //
-// Multi-field signup:
-//   - Category preference  → which experience does the user want most
-//   - Frequency            → how often they go to cultural events today
-//   - Email                → required, validated
+// Field order (updated 2026-05-14):
+//   - Email                → REQUIRED, validated (asked first — reduce friction)
+//   - Category preference  → OPTIONAL — which experience does the user want most
+//   - Frequency            → OPTIONAL — how often they go to cultural events today
 //
-// Psychology of asking these BEFORE the email:
-//   1. "Be a part of shaping the experience" — investment principle
-//   2. Each answer is a micro-commitment; commitment escalates by the time
-//      they reach the email field
-//   3. Data we collect helps prioritise venue partnerships post-launch
+// Reasoning: reduce drop-off. Email-first means submission is possible after
+// 5 seconds. Questions remain visible for those who want to shape the product,
+// but skipping them is a one-tap submit.
 //
 // On success: positions number + welcome message + community CTAs
 // (Insta/FB follow + share with friends).
@@ -40,12 +38,10 @@ const FREQUENCIES = [
 ] as const;
 
 const schema = z.object({
-  preferredCategories: z
-    .array(z.string())
-    .min(1, "Pick at least one — you can choose several."),
-  eventsPerMonth: z
-    .array(z.string())
-    .min(1, "Pick the option(s) that fit you — you can choose more than one."),
+  // Both questions are now OPTIONAL (default empty array — no min)
+  preferredCategories: z.array(z.string()).default([]),
+  eventsPerMonth: z.array(z.string()).default([]),
+  // Email is the only required field
   email: z
     .string()
     .min(1, "Please enter your email.")
@@ -239,16 +235,45 @@ export default function WaitlistForm() {
       noValidate
     >
       <p className="text-center font-sans text-sm leading-relaxed text-ink-soft">
-        <span className="italic text-ink">Be part of shaping the experience.</span>{" "}
-        Two quick questions — then your email.
+        <span className="italic text-ink">Just your email — the rest is optional.</span>{" "}
+        Help us shape the experience if you want to.
       </p>
 
-      {/* Question 1 — category preference (multi-select) */}
+      {/* Email — REQUIRED, asked first */}
       <fieldset className="mt-8">
         <legend className="font-sans text-[11px] font-medium uppercase tracking-[1.5px] text-ink-muted">
-          01 · What kind of culture excites you most?{" "}
-          <span className="text-ink-muted/70 normal-case tracking-normal">
-            Pick as many as you like
+          01 · Your email
+          <span className="ml-2 text-accent normal-case tracking-normal">required</span>
+        </legend>
+        <Controller
+          control={control}
+          name="email"
+          render={({ field }) => (
+            <input
+              {...field}
+              type="email"
+              placeholder="you@email.com"
+              aria-label="Email"
+              autoComplete="email"
+              inputMode="email"
+              disabled={isSubmitting}
+              className="mt-3 w-full rounded-full border border-line bg-card px-5 py-3.5 font-sans text-base text-ink placeholder-ink-muted/60 outline-none transition-colors focus:border-accent disabled:opacity-60"
+            />
+          )}
+        />
+        {errors.email && (
+          <p className="mt-2 font-sans text-sm text-ink-soft" role="alert">
+            {errors.email.message}
+          </p>
+        )}
+      </fieldset>
+
+      {/* Question 1 — category preference (multi-select, OPTIONAL) */}
+      <fieldset className="mt-8">
+        <legend className="font-sans text-[11px] font-medium uppercase tracking-[1.5px] text-ink-muted">
+          02 · What kind of culture excites you most?
+          <span className="ml-2 text-ink-muted/70 normal-case tracking-normal">
+            optional · pick as many as you like
           </span>
         </legend>
         <Controller
@@ -278,19 +303,14 @@ export default function WaitlistForm() {
             </div>
           )}
         />
-        {errors.preferredCategories && (
-          <p className="mt-2 font-sans text-sm text-ink-soft" role="alert">
-            {errors.preferredCategories.message}
-          </p>
-        )}
       </fieldset>
 
-      {/* Question 2 — frequency (multi-select) */}
+      {/* Question 2 — frequency (multi-select, OPTIONAL) */}
       <fieldset className="mt-8">
         <legend className="font-sans text-[11px] font-medium uppercase tracking-[1.5px] text-ink-muted">
-          02 · How often do you go to cultural events today?{" "}
-          <span className="text-ink-muted/70 normal-case tracking-normal">
-            Multiple OK
+          03 · How often do you go to cultural events today?
+          <span className="ml-2 text-ink-muted/70 normal-case tracking-normal">
+            optional · multiple OK
           </span>
         </legend>
         <Controller
@@ -320,39 +340,6 @@ export default function WaitlistForm() {
             </div>
           )}
         />
-        {errors.eventsPerMonth && (
-          <p className="mt-2 font-sans text-sm text-ink-soft" role="alert">
-            {errors.eventsPerMonth.message}
-          </p>
-        )}
-      </fieldset>
-
-      {/* Email */}
-      <fieldset className="mt-8">
-        <legend className="font-sans text-[11px] font-medium uppercase tracking-[1.5px] text-ink-muted">
-          03 · Where should we send your invitation?
-        </legend>
-        <Controller
-          control={control}
-          name="email"
-          render={({ field }) => (
-            <input
-              {...field}
-              type="email"
-              placeholder="you@email.com"
-              aria-label="Email"
-              autoComplete="email"
-              inputMode="email"
-              disabled={isSubmitting}
-              className="mt-3 w-full rounded-full border border-line bg-card px-5 py-3.5 font-sans text-base text-ink placeholder-ink-muted/60 outline-none transition-colors focus:border-accent disabled:opacity-60"
-            />
-          )}
-        />
-        {errors.email && (
-          <p className="mt-2 font-sans text-sm text-ink-soft" role="alert">
-            {errors.email.message}
-          </p>
-        )}
       </fieldset>
 
       {submitError && (

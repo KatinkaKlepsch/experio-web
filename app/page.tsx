@@ -81,17 +81,19 @@ export default function Home() {
           </a>
         </div>
       </header>
+      
+
 
       {/* ─── 2. HERO — anti-pattern headline ─── */}
       <section id="top" className="relative overflow-hidden px-6 pb-24 pt-20 md:pt-32">
         <div className="mx-auto max-w-4xl text-center">
           <Eyebrow>Copenhagen · Est. 2026</Eyebrow>
           <h1 className="mt-6 font-display text-5xl font-black leading-[1.05] tracking-tight text-ink md:text-7xl">
-            Stop <span className="italic text-accent">planning</span> culture.<br />
-            Start <span className="italic text-accent">having</span> it.
+            Unlock your city.<br />
+            <span className="italic text-accent">Your subscription to Copenhagen culture</span>.
           </h1>
           <p className="mx-auto mt-8 max-w-xl font-display text-lg italic leading-relaxed text-ink-soft md:text-xl">
-            One monthly subscription. Decide tonight, show up, enjoy.
+            Decide today, show up, enjoy.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-3">
             <a
@@ -120,7 +122,7 @@ export default function Home() {
             <Eyebrow>What it is</Eyebrow>
             <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-ink md:text-5xl">
               Like Spotify changed your music.<br />
-              Experio changes your <span className="italic text-accent">nights</span>.
+              Experio changes your <span className="italic text-accent">social & cultural lifestyle</span>.
             </h2>
             <p className="mx-auto mt-6 max-w-xl font-sans text-base leading-relaxed text-ink-soft">
               One monthly subscription. The city's culture, ready to discover.
@@ -133,19 +135,19 @@ export default function Home() {
                 eyebrow: "Editorial",
                 title: "Easy to find\nwhat you want.",
                 body:
-                  "And easier to discover something new. We curate, you choose — filtering and top picks instead of endless scrolling.",
+                  "And easier to discover something new. We curate, you choose - filtering and top picks instead of endless scrolling.",
               },
               {
                 eyebrow: "Spontaneous",
-                title: "Tonight,\nnot two months out.",
+                title: "Today,\nnot two months out.",
                 body:
                   "Decide on the way home from work. Book what's just around the corner.",
               },
               {
                 eyebrow: "Social",
-                title: "Hang out\naround culture.",
+                title: "Where \nculture connects.",
                 body:
-                  "Beyond coffee and walks. Meet up at a museum, share a wine tasting, discover new ways to spend time together.",
+                  "Culture made social - beyond coffee and walks. Meet up at a museum, share a wine tasting, discover new ways to spend time together.",
               },
             ].map((pillar) => (
               <article
@@ -182,18 +184,18 @@ export default function Home() {
             {[
               {
                 num: "01",
-                title: "See tonight's pick",
-                body: "Filter by category, see the top picks for tonight or this week. Curated to fit your taste.",
+                title: "See today's pick",
+                body: "Filter by category, see the top picks for the day or this week. Curated to fit your taste. Invite friends directly through the app.",
               },
               {
                 num: "02",
                 title: "Book with one tap",
-                body: "Pick your event and whether you bring someone. You get a QR code in the app and a confirmation by email.",
+                body: "Pick your event and whether you bring someone. No checkout, no payment details - just tap and it’s yours.",
               },
               {
                 num: "03",
-                title: "Show up — scan and enjoy",
-                body: "Scan at the door and you're in. Change of plans? Cancel up to 8 hours before — your spot reopens for someone else.",
+                title: "Show up - scan and enjoy",
+                body: "Scan at the door and you're in. Change of plans? Cancel up to 8 hours before - your spot reopens for someone else.",
               },
             ].map((step) => (
               <div
@@ -219,19 +221,23 @@ export default function Home() {
           <div className="text-center">
             <Eyebrow>What's included</Eyebrow>
             <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-ink md:text-5xl">
-              Six categories.<br />
-              The <span className="italic text-accent">Copenhagen</span> most people don't know.
+              Categories for every taste.<br />
+              <span className="italic text-accent">For finding new places </span> - and falling back in love with old ones.
             </h2>
           </div>
 
-          <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
+  
+          {/* Feedback: Change icons to fit category*/}
+          <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
             {[
               { emoji: "🎷", label: "Concert" },
-              { emoji: "🎬", label: "Cinema" },
+              { emoji: "🍷", label: "Teater" },
               { emoji: "🎤", label: "Stand-up" },
+              { emoji: "🎨", label: "Talks" },
+              { emoji: "🎬", label: "Cinema" },
               { emoji: "🏛", label: "Museum" },
-              { emoji: "🍷", label: "Wine tasting" },
               { emoji: "🎨", label: "Creative" },
+              { emoji: "🍷", label: "Sports" },
             ].map((cat) => (
               <div
                 key={cat.label}
@@ -244,120 +250,115 @@ export default function Home() {
           </div>
 
           <p className="mt-10 text-center font-sans text-sm text-ink-muted">
-            New venues announced weekly until launch.
+            New venues announced until launch.
           </p>
         </div>
       </section>
 
-      {/* ─── 5b. WHAT TO EXPECT — generic teaser, no specific venues named yet ─── */}
-      <section className="bg-dark-bg px-6 py-20 text-card">
-        <div className="mx-auto max-w-5xl">
-          <div className="text-center">
-            <p className="font-sans text-[11px] font-medium uppercase tracking-[2px] text-accent">
-              What to expect
-            </p>
-            <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-card md:text-5xl">
-              A different <span className="italic text-accent">evening</span>, every week.
-            </h2>
-          </div>
-
-          <div className="mt-14 grid grid-cols-2 gap-4 md:grid-cols-4">
-            {[
-              { emoji: "🎷", line: "A Friday jazz set" },
-              { emoji: "🏛", line: "A late evening at a museum" },
-              { emoji: "🍷", line: "A Sunday wine tasting" },
-              { emoji: "🎤", line: "A Tuesday stand-up night" },
-            ].map((item) => (
-              <div
-                key={item.line}
-                className="rounded-2xl border border-white/10 bg-dark-card p-6 text-center"
-              >
-                <div className="text-3xl">{item.emoji}</div>
-                <p className="mt-3 font-display text-base font-bold leading-tight text-card">
-                  {item.line}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <p className="mt-10 text-center font-sans text-sm italic text-card/60">
-            Specific venues announced as we sign them.
-          </p>
-        </div>
-      </section>
-
-      {/* ─── 6. PRICING ARGUMENT — Godo-inspired layout (visual on left, math on right) ─── */}
+      {/* ─── 6. PRICING ARGUMENT — Godo-style receipt aesthetic adapted to Experio brand ─── */}
       <section className="px-6 py-20">
-        <div className="mx-auto max-w-5xl">
-          <div className="mx-auto max-w-3xl text-center">
-            <Eyebrow>The math</Eyebrow>
-            <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-ink md:text-5xl">
-              Go out once a week.<br />
-              You&rsquo;re <span className="italic text-accent">already ahead</span>.
+        <div className="mx-auto max-w-3xl">
+          {/* Heavy headline + receipt subtitle */}
+          <div className="text-center">
+            <h2 className="font-display text-5xl font-black uppercase leading-none tracking-tight text-ink md:text-7xl">
+              The math
             </h2>
-            <p className="mx-auto mt-5 max-w-xl font-sans text-base leading-relaxed text-ink-soft">
-              Like a gym membership for culture. Use it once and it pays for itself. Use it
-              weekly and it changes how you live in Copenhagen.
+            <p className="mt-5 font-sans text-base leading-relaxed text-ink-soft md:text-lg">
+              One month. Normal prices. Then the Experio price.
             </p>
           </div>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2 md:items-stretch">
-            {/* Left: what four nights out costs today (reframed from "buying individually") */}
-            <div className="rounded-3xl border border-line bg-card p-8">
-              <p className="font-sans text-[11px] font-medium uppercase tracking-[1.5px] text-ink-muted">
-                What four nights out costs today
-              </p>
-              <ul className="mt-6 divide-y divide-line">
+          {/* Receipt card */}
+          <div className="mt-14 overflow-hidden rounded-2xl border border-line bg-card shadow-sm">
+            {/* Gold accent stripe (Godo uses red — we use Experio gold) */}
+            <div className="h-[6px] bg-accent" />
+
+            <div className="p-8 md:p-10">
+              {/* Header row — WITHOUT EXPERIO + date */}
+              <div className="flex items-start justify-between gap-6">
+                <div>
+                  <h3 className="font-display text-2xl font-black uppercase leading-none tracking-tight text-ink md:text-3xl">
+                    Without Experio
+                  </h3>
+                  <p className="mt-3 font-mono text-[10px] uppercase tracking-[1.5px] text-ink-muted">
+                    Standard ticket prices
+                  </p>
+                </div>
+                <div className="text-right">
+                  <p className="font-mono text-[10px] uppercase tracking-[1.5px] text-ink-muted">
+                    Date
+                  </p>
+                  <p className="mt-1 font-mono text-sm text-ink">14/05/2026</p>
+                </div>
+              </div>
+
+              {/* Top divider */}
+              <div className="mt-6 h-px bg-line" />
+
+              {/* Line items — receipt style */}
+              <ul className="mt-6 space-y-4">
                 {[
-                  { event: "A film at the cinema", price: 120 },
-                  { event: "A stand-up night", price: 130 },
-                  { event: "A live concert", price: 350 },
-                  { event: "An evening at the theatre", price: 425 },
+                  { week: "Week 1", item: "1× Cinema ticket", price: "120 kr" },
+                  { week: "Week 2", item: "1× Concert ticket", price: "350 kr" },
+                  { week: "Week 3", item: "1× Stand-up ticket", price: "130 kr" },
+                  { week: "Week 4", item: "1× Theatre ticket", price: "425 kr" },
                 ].map((row) => (
                   <li
-                    key={row.event}
-                    className="flex items-baseline justify-between py-3 font-sans text-base"
+                    key={row.item}
+                    className="grid grid-cols-[80px_1fr_auto] items-baseline gap-4 font-mono text-sm"
                   >
-                    <span className="text-ink-soft">{row.event}</span>
-                    <span className="font-display font-bold text-ink">
-                      {row.price} DKK
+                    <span className="text-[11px] uppercase tracking-wider text-ink-muted">
+                      {row.week}
                     </span>
+                    <span className="font-bold uppercase tracking-wide text-ink">
+                      {row.item}
+                    </span>
+                    <span className="text-ink">{row.price}</span>
                   </li>
                 ))}
               </ul>
-              <div className="mt-4 flex items-baseline justify-between border-t-2 border-ink pt-4">
-                <span className="font-sans text-sm uppercase tracking-wider text-ink-muted">
-                  One good week
+
+              {/* Bottom divider (heavy line, receipt-style) */}
+              <div className="mt-7 h-[2px] bg-ink" />
+
+              {/* Total — strikethrough */}
+              <div className="mt-5 flex items-baseline justify-between">
+                <span className="font-mono text-[11px] uppercase tracking-[1.5px] text-ink-muted">
+                  Total market value
                 </span>
-                <span className="font-display text-2xl font-bold text-ink-muted line-through">
-                  1,025 DKK
+                <span className="font-display text-2xl font-black text-ink-muted line-through decoration-accent decoration-[3px] md:text-3xl">
+                  1.025 kr
                 </span>
               </div>
-            </div>
 
-            {/* Right: Experio price card — escalating value lines */}
-            <div className="flex flex-col justify-center rounded-3xl bg-ink p-8 text-center">
-              <p className="font-sans text-[11px] font-medium uppercase tracking-[2px] text-accent-soft">
-                With Experio
-              </p>
-              <p className="mt-4 font-display text-7xl font-black leading-none text-accent md:text-8xl">
-                459
-              </p>
-              <p className="mt-2 font-sans text-sm uppercase tracking-wider text-card/70">
-                DKK / month
-              </p>
-              <div className="mt-6 space-y-2 font-sans text-sm text-card/80">
-                <p>Once a week — already ahead.</p>
-                <p>Twice a week — already winning.</p>
-                <p>Every week — a different city.</p>
+              {/* WITH EXPERIO highlight block */}
+              <div className="mt-6 rounded-xl bg-bg px-6 py-5">
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <p className="font-display text-2xl font-black uppercase leading-none tracking-tight text-ink md:text-3xl">
+                      With Experio
+                    </p>
+                    <p className="mt-2 font-mono text-[10px] uppercase tracking-[1.5px] text-ink-muted">
+                      Plus unlimited access to Copenhagen culture
+                    </p>
+                  </div>
+                  <p className="font-display text-5xl font-black leading-none text-ink md:text-6xl">
+                    459 kr
+                  </p>
+                </div>
               </div>
             </div>
           </div>
 
-          <p className="mx-auto mt-10 max-w-2xl text-center font-sans text-sm leading-relaxed text-ink-soft">
+          {/* Supporting lifestyle copy — preserved from earlier rewrite */}
+          <p className="mx-auto mt-10 max-w-2xl text-center font-sans text-base leading-relaxed text-ink-soft">
+            Like a gym membership for culture. Use it once and it pays for itself. Use it
+            weekly and it changes how you live in Copenhagen.
+          </p>
+
+          <p className="mx-auto mt-6 max-w-2xl text-center font-sans text-xs leading-relaxed text-ink-muted">
             Prices are averages from Copenhagen venues 2026, verified against actual partner
-            pricing before launch. Categories like museum and creative often have lower
-            individual prices but less predictable access.
+            pricing before launch.
           </p>
         </div>
       </section>
@@ -370,8 +371,8 @@ export default function Home() {
             Join the <span className="italic text-accent">waitlist</span>.
           </h2>
           <p className="mx-auto mt-6 max-w-lg font-sans text-base leading-relaxed text-ink-soft">
-            Two questions help us choose the right venues for your taste — then your email.
-            Follow along on Instagram while we build it.
+            Just your email — the questions below are optional, but they help us pick the
+            right venues for your taste. Follow along on Instagram while we build it.
           </p>
 
           {/* Loss aversion — non-pricing scarcity. First wave shapes the experience;
