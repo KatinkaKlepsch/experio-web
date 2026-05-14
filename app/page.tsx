@@ -89,8 +89,8 @@ export default function Home() {
         <div className="mx-auto max-w-4xl text-center">
           <Eyebrow>Copenhagen · Est. 2026</Eyebrow>
           <h1 className="mt-6 font-display text-5xl font-black leading-[1.05] tracking-tight text-ink md:text-7xl">
-            Unlock your city.<br />
-            <span className="italic text-accent">Your subscription to Copenhagen culture</span>.
+            <span className="text-accent">Unlock</span> your city.<br />
+            Your subscription to Copenhagen culture.
           </h1>
           <p className="mx-auto mt-8 max-w-xl font-display text-lg italic leading-relaxed text-ink-soft md:text-xl">
             Decide today, show up, enjoy.
