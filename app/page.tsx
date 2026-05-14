@@ -73,12 +73,28 @@ export default function Home() {
             <CityGrid size={28} className="text-ink" />
             <Wordmark size="text-xl" />
           </a>
-          <a
-            href="#waitlist"
-            className="rounded-full bg-ink px-5 py-2 font-sans text-xs font-medium text-card transition-opacity hover:opacity-90"
-          >
-            Apply for access
-          </a>
+          <div className="flex items-center gap-4">
+            {/* Instagram — placeholder handle, update when account is live */}
+            <a
+              href="https://instagram.com/experio"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow Experio on Instagram"
+              className="text-ink transition-colors hover:text-accent"
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" role="img" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+            <a
+              href="#waitlist"
+              className="rounded-full bg-ink px-5 py-2 font-sans text-xs font-medium text-card transition-opacity hover:opacity-90"
+            >
+              Apply for access
+            </a>
+          </div>
         </div>
       </header>
       
@@ -145,7 +161,7 @@ export default function Home() {
               },
               {
                 eyebrow: "Social",
-                title: "Where \nculture connects.",
+                title: "Where culture \nconnects.",
                 body:
                   "Culture made social - beyond coffee and walks. Meet up at a museum, share a wine tasting, discover new ways to spend time together.",
               },
@@ -232,13 +248,13 @@ export default function Home() {
           <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
             {[
               { emoji: "🎷", label: "Concert" },
-              { emoji: "🍷", label: "Theater" },
+              { emoji: "🎭", label: "Theater" },
               { emoji: "🎤", label: "Stand-up" },
-              { emoji: "🎨", label: "Talks" },
+              { emoji: "💬", label: "Talks" },
               { emoji: "🎬", label: "Cinema" },
               { emoji: "🏛", label: "Museum" },
               { emoji: "🎨", label: "Creative" },
-              { emoji: "🍷", label: "Sports" },
+              { emoji: "🏃", label: "Sports" },
             ].map((cat) => (
               <div
                 key={cat.label}
@@ -359,9 +375,26 @@ export default function Home() {
             Join the <span className="italic text-accent">waitlist</span>.
           </h2>
           <p className="mx-auto mt-6 max-w-lg font-sans text-base leading-relaxed text-ink-soft">
-            Just your email — the questions below are optional, but they help us pick the
-            right venues for your taste. Follow along on Instagram while we build it.
+            Just your email. Follow along on Instagram while we build it.
           </p>
+
+          {/* Instagram CTA — visible Follow-button before the form */}
+          <div className="mt-6 flex justify-center">
+            <a
+              href="https://instagram.com/experio"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow Experio on Instagram"
+              className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-5 py-2.5 font-sans text-sm font-medium text-ink transition-colors hover:border-accent hover:text-accent"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" role="img" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none" />
+              </svg>
+              Follow on Instagram
+            </a>
+          </div>
 
           {/* Loss aversion — non-pricing scarcity. First wave shapes the experience;
               later waves get the city someone else built. */}
@@ -403,7 +436,7 @@ export default function Home() {
               },
               {
                 q: "Which venues are included?",
-                a: "We're announcing venues continuously up to launch. Expect various venues across concert, cinema, stand-up, museum, wine, and creative - chose for taste.",
+                a: "We're announcing venues continuously up to launch. Expect various venues across concert, cinema, stand-up, museum, wine, and creative - choose for taste.",
               },
               {
                 q: "What if I can't make it to an event?",
@@ -415,7 +448,7 @@ export default function Home() {
               },
               {
                 q: "How do I book a ticket?",
-                a: "Subscribe to experio, download the app. Choose your event and tap to book. Show up and scan the QR codeat the venue. Enjoy!",
+                a: "Subscribe to experio, download the app. Choose your event and tap to book. Show up and scan the QR code at the venue. Enjoy!",
               }
             ].map((item) => (
               <details
