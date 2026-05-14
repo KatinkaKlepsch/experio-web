@@ -232,7 +232,7 @@ export default function Home() {
           <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
             {[
               { emoji: "🎷", label: "Concert" },
-              { emoji: "🍷", label: "Teater" },
+              { emoji: "🍷", label: "Theater" },
               { emoji: "🎤", label: "Stand-up" },
               { emoji: "🎨", label: "Talks" },
               { emoji: "🎬", label: "Cinema" },
@@ -249,8 +249,6 @@ export default function Home() {
               </div>
             ))}
           </div>
-
-
         </div>
       </section>
 
