@@ -3,16 +3,13 @@
 // Waitlist form — client component (interactivity not allowed in static export
 // Server Components). POSTs to the Supabase Edge Function `waitlist-signup`.
 //
-// Field order (updated 2026-05-14):
-//   - Email                → REQUIRED, validated (asked first — reduce friction)
-//   - Category preference  → OPTIONAL — which experience does the user want most
-//   - Frequency            → OPTIONAL — how often they go to cultural events today
+// Minimal form (simplified 2026-05-14):
+//   - Email  → REQUIRED, validated. Only field.
 //
-// Reasoning: reduce drop-off. Email-first means submission is possible after
-// 5 seconds. Questions remain visible for those who want to shape the product,
-// but skipping them is a one-tap submit.
+// Reasoning: minimize drop-off. Optional questions were removed entirely —
+// venue/category preferences will be captured post-signup if needed.
 //
-// On success: positions number + welcome message + community CTAs
+// On success: position number + welcome message + community CTAs
 // (Insta/FB follow + share with friends).
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -20,29 +17,7 @@ import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 
-const CATEGORIES = [
-  { value: "concerts", label: "Concerts" },
-  { value: "cinema", label: "Cinema" },
-  { value: "standup", label: "Stand-up" },
-  { value: "museums", label: "Museums" },
-  { value: "wine", label: "Wine tastings" },
-  { value: "workshops", label: "Workshops" },
-  { value: "everything", label: "All of it" },
-] as const;
-
-const FREQUENCIES = [
-  { value: "rarely", label: "Rarely — once in a while" },
-  { value: "one", label: "About once a month" },
-  { value: "two_three", label: "2–3 times a month" },
-  { value: "four_plus", label: "4+ times a month" },
-] as const;
-
 const schema = z.object({
-  // Both questions are now OPTIONAL — empty arrays are valid (no .min() check).
-  // Defaults are set in defaultValues below, so the form always has these fields.
-  preferredCategories: z.array(z.string()),
-  eventsPerMonth: z.array(z.string()),
-  // Email is the only required field
   email: z
     .string()
     .min(1, "Please enter your email.")
@@ -72,12 +47,8 @@ export default function WaitlistForm() {
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
     mode: "onBlur",
-    defaultValues: { preferredCategories: [], eventsPerMonth: [], email: "" },
+    defaultValues: { email: "" },
   });
-
-  // Toggle helper — adds value if not in array, removes if present.
-  const toggle = (current: string[], value: string): string[] =>
-    current.includes(value) ? current.filter((v) => v !== value) : [...current, value];
 
   const onSubmit = async (values: FormValues) => {
     setSubmitError(null);
@@ -102,10 +73,9 @@ export default function WaitlistForm() {
         body: JSON.stringify({
           email: values.email,
           source: "landing",
-          // Send arrays as comma-separated strings — Edge Function accepts either,
-          // and DB column is text. Easy to split for analytics later.
-          preferred_category: values.preferredCategories.join(","),
-          events_per_month: values.eventsPerMonth.join(","),
+          // Send empty strings for legacy fields the Edge Function expects.
+          preferred_category: "",
+          events_per_month: "",
         }),
       });
 
@@ -172,7 +142,7 @@ export default function WaitlistForm() {
           </p>
         </div>
 
-        {/* What happens next — sets expectations + reduces "did anything just happen?" anxiety */}
+        {/* What happens next */}
         <div className="mt-10 rounded-2xl border border-line bg-bg p-6">
           <p className="font-sans text-[11px] font-medium uppercase tracking-[1.5px] text-ink-muted">
             What happens next
@@ -202,7 +172,7 @@ export default function WaitlistForm() {
           </div>
         </div>
 
-        {/* Referral CTA — capitalises on commitment + reciprocity */}
+        {/* Referral CTA */}
         <div className="mt-5 rounded-2xl border border-accent/30 bg-accent-soft/20 p-6">
           <p className="font-display text-lg font-bold text-ink">
             Get a friend in — experience it together.
@@ -232,135 +202,48 @@ export default function WaitlistForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="mx-auto mt-10 max-w-xl text-left"
+      className="mx-auto mt-10 flex max-w-xl flex-col gap-3 sm:flex-row"
       noValidate
     >
-      <p className="text-center font-sans text-sm leading-relaxed text-ink-soft">
-        <span className="italic text-ink">Just your email — the rest is optional.</span>{" "}
-        Help us shape the experience if you want to.
-      </p>
-
-      {/* Email — REQUIRED, asked first */}
-      <fieldset className="mt-8">
-        <legend className="font-sans text-[11px] font-medium uppercase tracking-[1.5px] text-ink-muted">
-          01 · Your email
-          <span className="ml-2 text-accent normal-case tracking-normal">required</span>
-        </legend>
-        <Controller
-          control={control}
-          name="email"
-          render={({ field }) => (
-            <input
-              {...field}
-              type="email"
-              placeholder="you@email.com"
-              aria-label="Email"
-              autoComplete="email"
-              inputMode="email"
-              disabled={isSubmitting}
-              className="mt-3 w-full rounded-full border border-line bg-card px-5 py-3.5 font-sans text-base text-ink placeholder-ink-muted/60 outline-none transition-colors focus:border-accent disabled:opacity-60"
-            />
-          )}
-        />
-        {errors.email && (
-          <p className="mt-2 font-sans text-sm text-ink-soft" role="alert">
-            {errors.email.message}
-          </p>
+      <Controller
+        control={control}
+        name="email"
+        render={({ field }) => (
+          <input
+            {...field}
+            type="email"
+            placeholder="you@email.com"
+            aria-label="Email"
+            autoComplete="email"
+            inputMode="email"
+            disabled={isSubmitting}
+            className="flex-1 rounded-full border border-line bg-card px-5 py-3.5 font-sans text-base text-ink placeholder-ink-muted/60 outline-none transition-colors focus:border-accent disabled:opacity-60"
+          />
         )}
-      </fieldset>
-
-      {/* Question 1 — category preference (multi-select, OPTIONAL) */}
-      <fieldset className="mt-8">
-        <legend className="font-sans text-[11px] font-medium uppercase tracking-[1.5px] text-ink-muted">
-          02 · What kind of culture excites you most?
-          <span className="ml-2 text-ink-muted/70 normal-case tracking-normal">
-            optional · pick as many as you like
-          </span>
-        </legend>
-        <Controller
-          control={control}
-          name="preferredCategories"
-          render={({ field }) => (
-            <div className="mt-3 flex flex-wrap gap-2">
-              {CATEGORIES.map((cat) => {
-                const selected = field.value.includes(cat.value);
-                return (
-                  <button
-                    type="button"
-                    key={cat.value}
-                    onClick={() => field.onChange(toggle(field.value, cat.value))}
-                    aria-pressed={selected}
-                    className={`rounded-full border px-4 py-2 font-sans text-sm transition-all ${
-                      selected
-                        ? "border-ink bg-ink text-card"
-                        : "border-line bg-card text-ink-soft hover:border-accent"
-                    }`}
-                  >
-                    {selected && <span aria-hidden="true">✓ </span>}
-                    {cat.label}
-                  </button>
-                );
-              })}
-            </div>
-          )}
-        />
-      </fieldset>
-
-      {/* Question 2 — frequency (multi-select, OPTIONAL) */}
-      <fieldset className="mt-8">
-        <legend className="font-sans text-[11px] font-medium uppercase tracking-[1.5px] text-ink-muted">
-          03 · How often do you go to cultural events today?
-          <span className="ml-2 text-ink-muted/70 normal-case tracking-normal">
-            optional · multiple OK
-          </span>
-        </legend>
-        <Controller
-          control={control}
-          name="eventsPerMonth"
-          render={({ field }) => (
-            <div className="mt-3 flex flex-col gap-2">
-              {FREQUENCIES.map((freq) => {
-                const selected = field.value.includes(freq.value);
-                return (
-                  <button
-                    type="button"
-                    key={freq.value}
-                    onClick={() => field.onChange(toggle(field.value, freq.value))}
-                    aria-pressed={selected}
-                    className={`flex items-center gap-3 rounded-2xl border px-5 py-3 text-left font-sans text-sm transition-all ${
-                      selected
-                        ? "border-ink bg-ink text-card"
-                        : "border-line bg-card text-ink-soft hover:border-accent"
-                    }`}
-                  >
-                    <span aria-hidden="true">{selected ? "✓" : "○"}</span>
-                    <span>{freq.label}</span>
-                  </button>
-                );
-              })}
-            </div>
-          )}
-        />
-      </fieldset>
-
-      {submitError && (
-        <p className="mt-6 text-center font-sans text-sm text-ink-soft" role="alert">
-          {submitError}
-        </p>
-      )}
+      />
 
       <button
         type="submit"
         disabled={isSubmitting}
-        className="mt-8 w-full rounded-full bg-ink py-4 font-sans font-medium text-card transition-transform hover:scale-[1.01] disabled:cursor-wait disabled:opacity-60"
+        className="rounded-full bg-ink px-8 py-3.5 font-sans font-medium text-card transition-transform hover:scale-[1.01] disabled:cursor-wait disabled:opacity-60"
       >
         {isSubmitting ? "Sending…" : "Apply for access"}
       </button>
 
-      <p className="mt-6 text-center font-sans text-xs leading-relaxed text-ink-muted">
-        No spam. A welcome email and a few updates before launch — from a human, not
-        noreply@.
-      </p>
+      {errors.email && (
+        <p
+          className="absolute mt-[60px] font-sans text-sm text-ink-soft sm:relative sm:mt-0 sm:basis-full"
+          role="alert"
+        >
+          {errors.email.message}
+        </p>
+      )}
+
+      {submitError && (
+        <p className="basis-full text-center font-sans text-sm text-ink-soft" role="alert">
+          {submitError}
+        </p>
+      )}
     </form>
   );
 }

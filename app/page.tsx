@@ -89,11 +89,11 @@ export default function Home() {
         <div className="mx-auto max-w-4xl text-center">
           <Eyebrow>Copenhagen · Est. 2026</Eyebrow>
           <h1 className="mt-6 font-display text-5xl font-black leading-[1.05] tracking-tight text-ink md:text-7xl">
-            <span className="text-accent">Unlock</span> your city.<br />
-            Your subscription to Copenhagen culture.
+            Unlock your city.<br />
+            Your subscription to <span className="text-accent">Copenhagen culture</span>.
           </h1>
           <p className="mx-auto mt-8 max-w-xl font-display text-lg italic leading-relaxed text-ink-soft md:text-xl">
-            Decide today, show up, enjoy.
+            Decide today. Show up. Enjoy.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-3">
             <a
@@ -122,7 +122,7 @@ export default function Home() {
             <Eyebrow>What it is</Eyebrow>
             <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-ink md:text-5xl">
               Like Spotify changed your music.<br />
-              Experio changes your <span className="italic text-accent">social & cultural lifestyle</span>.
+              Experio changes your <span className="italic text-accent whitespace-nowrap">cultural lifestyle</span>.
             </h2>
             <p className="mx-auto mt-6 max-w-xl font-sans text-base leading-relaxed text-ink-soft">
               One monthly subscription. The city's culture, ready to discover.
@@ -221,11 +221,12 @@ export default function Home() {
           <div className="text-center">
             <Eyebrow>What's included</Eyebrow>
             <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-ink md:text-5xl">
-              Categories for every taste.<br />
-              <span className="italic text-accent">For finding new places </span> - and falling back in love with old ones.
+              For<span className="italic text-accent"> finding </span> new places - and<span className="italic text-accent"> falling </span>back in love with old ones.
             </h2>
+            <p className="mx-auto mt-6 max-w-xl text-center font-sans text-base leading-relaxed text-ink-soft">
+              Categories for every taste. New venues announced until launch.
+            </p>
           </div>
-
   
           {/* Feedback: Change icons to fit category*/}
           <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
@@ -249,9 +250,7 @@ export default function Home() {
             ))}
           </div>
 
-          <p className="mt-10 text-center font-sans text-sm text-ink-muted">
-            New venues announced until launch.
-          </p>
+
         </div>
       </section>
 
@@ -260,11 +259,11 @@ export default function Home() {
         <div className="mx-auto max-w-3xl">
           {/* Heavy headline + receipt subtitle */}
           <div className="text-center">
-            <h2 className="font-display text-5xl font-black uppercase leading-none tracking-tight text-ink md:text-7xl">
-              The math
+            <h2 className="font-display text-3xl font-bold leading-tight text-ink md:text-5xl">
+              The numbers don't <span className="text-accent">lie</span>.
             </h2>
             <p className="mt-5 font-sans text-base leading-relaxed text-ink-soft md:text-lg">
-              One month. Normal prices. Then the Experio price.
+             See for yourself.
             </p>
           </div>
 
@@ -277,18 +276,14 @@ export default function Home() {
               {/* Header row — WITHOUT EXPERIO + date */}
               <div className="flex items-start justify-between gap-6">
                 <div>
-                  <h3 className="font-display text-2xl font-black uppercase leading-none tracking-tight text-ink md:text-3xl">
+                  <h3 className="font-display text-xl font-bold leading-none tracking-tight text-ink md:text-2xl">
                     Without Experio
                   </h3>
-                  <p className="mt-3 font-mono text-[10px] uppercase tracking-[1.5px] text-ink-muted">
-                    Standard ticket prices
+                  <p className="mt-3 font-sans text-[10px] tracking-[1.5px] text-ink-muted">
+                    Market ticket prices
                   </p>
                 </div>
                 <div className="text-right">
-                  <p className="font-mono text-[10px] uppercase tracking-[1.5px] text-ink-muted">
-                    Date
-                  </p>
-                  <p className="mt-1 font-mono text-sm text-ink">14/05/2026</p>
                 </div>
               </div>
 
@@ -305,12 +300,12 @@ export default function Home() {
                 ].map((row) => (
                   <li
                     key={row.item}
-                    className="grid grid-cols-[80px_1fr_auto] items-baseline gap-4 font-mono text-sm"
+                    className="grid grid-cols-[80px_1fr_auto] items-baseline gap-4 font-sans text-sm"
                   >
-                    <span className="text-[11px] uppercase tracking-wider text-ink-muted">
+                    <span className="text-[11px] tracking-wider text-ink-muted">
                       {row.week}
                     </span>
-                    <span className="font-bold uppercase tracking-wide text-ink">
+                    <span className="font-bold tracking-wide text-ink">
                       {row.item}
                     </span>
                     <span className="text-ink">{row.price}</span>
@@ -323,10 +318,10 @@ export default function Home() {
 
               {/* Total — strikethrough */}
               <div className="mt-5 flex items-baseline justify-between">
-                <span className="font-mono text-[11px] uppercase tracking-[1.5px] text-ink-muted">
-                  Total market value
+                <span className="font-sans text-[11px] tracking-[1.5px] text-ink-muted">
+                  Total value
                 </span>
-                <span className="font-display text-2xl font-black text-ink-muted line-through decoration-accent decoration-[3px] md:text-3xl">
+                <span className="font-display text-xl font-bold text-ink-muted line-through decoration-accent decoration-[3px] md:text-2xl">
                   1.025 kr
                 </span>
               </div>
@@ -335,11 +330,11 @@ export default function Home() {
               <div className="mt-6 rounded-xl bg-bg px-6 py-5">
                 <div className="flex items-center justify-between gap-4">
                   <div>
-                    <p className="font-display text-2xl font-black uppercase leading-none tracking-tight text-ink md:text-3xl">
+                    <p className="font-display text-xl font-bold leading-none tracking-tight text-ink md:text-2xl">
                       With Experio
                     </p>
-                    <p className="mt-2 font-mono text-[10px] uppercase tracking-[1.5px] text-ink-muted">
-                      Plus unlimited access to Copenhagen culture
+                    <p className="mt-2 font-sans text-[10px] tracking-[1.5px] text-ink-muted">
+                      Plus access to everything else the city has to offer.
                     </p>
                   </div>
                   <p className="font-display text-5xl font-black leading-none text-ink md:text-6xl">
@@ -351,11 +346,6 @@ export default function Home() {
           </div>
 
           {/* Supporting lifestyle copy — preserved from earlier rewrite */}
-          <p className="mx-auto mt-10 max-w-2xl text-center font-sans text-base leading-relaxed text-ink-soft">
-            Like a gym membership for culture. Use it once and it pays for itself. Use it
-            weekly and it changes how you live in Copenhagen.
-          </p>
-
           <p className="mx-auto mt-6 max-w-2xl text-center font-sans text-xs leading-relaxed text-ink-muted">
             Prices are averages from Copenhagen venues 2026, verified against actual partner
             pricing before launch.
@@ -377,12 +367,11 @@ export default function Home() {
 
           {/* Loss aversion — non-pricing scarcity. First wave shapes the experience;
               later waves get the city someone else built. */}
-          <p className="mx-auto mt-4 max-w-md font-display text-sm italic text-ink">
-            The first wave opens in September. They help shape which venues we sign.
-            The next wave joins what they built.
-          </p>
 
           <WaitlistForm />
+            <p className="mx-auto mt-4 max-w-md font-display text-sm italic text-ink">
+            Copenhagen culture. Your access starts in September. 
+          </p>
         </div>
       </section>
 
@@ -400,28 +389,36 @@ export default function Home() {
             {[
               {
                 q: "When do you launch?",
-                a: "We're opening to the first members later this year. Waitlist members hear from us in August with the next steps.",
+                a: "The waitlist is open. We're opening to the first members in September. Waitlist members hear from us in August with the next steps.",
               },
               {
                 q: "What does it cost?",
-                a: "459 DKK / month. No commitment — cancel anytime. The membership also lets you bring a guest to most events for a small per-guest fee. Final guest pricing is being set with our partner venues and will be shared with waitlist members first.",
+                a: "459 DKK / month. No commitment - cancel or pause anytime. The membership also lets you bring a guest to most events for a small per-guest fee.",
               },
               {
                 q: "How many events can I book?",
-                a: "A generous monthly allowance, with limits per category to keep the experience varied and sustainable for venues. The exact structure is being finalised with our co-creation venues and announced before launch.",
+                a: "Access to all types of events, with limits per category to keep the experience varied and sustainable for venues. The exact structure is being finalised with our venues and announced before launch.",
               },
               {
                 q: "Can I book without having a subscription?",
-                a: "No — Experio isn't a ticket marketplace. It's about being part of a curated frame, not buying single tickets.",
+                a: "No - Experio isn't a ticket marketplace. You subscribe to your cultural lifestyle. You can always add another ticket for your friend.",
               },
               {
                 q: "Which venues are included?",
-                a: "We're announcing venues continuously up to launch. Expect intimate venues across concert, cinema, stand-up, museum, wine, and creative — chosen for taste, not size.",
+                a: "We're announcing venues continuously up to launch. Expect various venues across concert, cinema, stand-up, museum, wine, and creative - chose for taste.",
               },
               {
                 q: "What if I can't make it to an event?",
-                a: "Cancel free up to 8 hours before. Your spot opens for the waitlist. Repeated no-shows may limit your booking frequency (we track, but we're fair).",
+                a: "Cancel free up to 8 hours before. Repeated no-shows may limit your booking frequency (we track, but we're fair).",
               },
+              {
+                q: "What if I don't use it enough in a month?",
+                a: "If you don't use it enough, you can always cancel or pause your subscription at anytime.",
+              },
+              {
+                q: "How do I book a ticket?",
+                a: "Subscribe to experio, download the app. Choose your event and tap to book. Show up and scan the QR codeat the venue. Enjoy!",
+              }
             ].map((item) => (
               <details
                 key={item.q}
