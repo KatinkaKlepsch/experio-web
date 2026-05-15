@@ -191,7 +191,7 @@ export default function WaitlistForm() {
         </div>
 
         <p className="mt-8 text-center font-sans text-xs text-ink-muted">
-          Welcome email sent from <span className="text-ink">onboarding@resend.dev</span> —
+          Welcome email sent from <span className="text-ink">waitlist@myexperio.com</span> —
           check spam if you don't see it within a minute.
         </p>
       </div>
