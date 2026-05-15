@@ -23,7 +23,7 @@ Public marketing site at `myexperio.com` for Experio — a subscription-based cu
 | Repo | Purpose | Deploys to |
 |---|---|---|
 | [`Experio`](https://github.com/KatinkaKlepsch/Experio) | Native app code (Expo + RN), pitch decks, Supabase schema, HTML mockups, business docs | Netlify `myexperiomvp.netlify.app` (from `UI/` folder) |
-| **`experio-web`** ⭐ this repo | Next.js landing page + waitlist | **Cloudflare Pages** at `myexperio.com` / `experio-web.pages.dev` |
+| **`experio-web`** ⭐ this repo | Next.js landing page + waitlist | **Cloudflare Pages** at `myexperio.com` (live since 2026-05-15; fallback subdomain `experio-web.pages.dev`) |
 
 Both repos share the **same Supabase project** (`uijevrpnpenyphjibedv`). Schema migrations live in `Experio/supabase/migrations/` — this repo only consumes the schema.
 

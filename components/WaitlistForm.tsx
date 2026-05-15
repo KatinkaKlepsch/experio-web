@@ -31,7 +31,7 @@ type SuccessState = {
   alreadyOnList: boolean;
 };
 
-const SHARE_URL = "https://experio-web.pages.dev";
+const SHARE_URL = "https://myexperio.com";
 const INSTAGRAM_URL = "https://instagram.com/experio"; // TODO replace once handle confirmed
 const FACEBOOK_URL = "https://facebook.com/experio";   // TODO replace once page exists
 
