@@ -34,6 +34,7 @@ type SuccessState = {
 const SHARE_URL = "https://myexperio.com";
 const INSTAGRAM_URL = "https://instagram.com/experio"; // TODO replace once handle confirmed
 const FACEBOOK_URL = "https://facebook.com/experio";   // TODO replace once page exists
+const LINKEDIN_URL = "https://linkedin.com/company/experio"; // TODO replace once page exists
 
 export default function WaitlistForm() {
   const [success, setSuccess] = useState<SuccessState | null>(null);
@@ -168,6 +169,14 @@ export default function WaitlistForm() {
               className="rounded-full border border-line bg-card px-4 py-2 font-sans text-xs font-medium text-ink transition-colors hover:border-accent"
             >
               Follow on Facebook
+            </a>
+            <a
+              href={LINKEDIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-line bg-card px-4 py-2 font-sans text-xs font-medium text-ink transition-colors hover:border-accent"
+            >
+              Follow on LinkedIn
             </a>
           </div>
         </div>
