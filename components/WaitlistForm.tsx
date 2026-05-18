@@ -22,6 +22,11 @@ const schema = z.object({
     .string()
     .min(1, "Please enter your email.")
     .email("That doesn't look like a valid email."),
+  acceptedTerms: z
+    .boolean()
+    .refine((v) => v === true, {
+      message: "Please accept the Privacy Policy to continue.",
+    }),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -48,7 +53,7 @@ export default function WaitlistForm() {
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
     mode: "onBlur",
-    defaultValues: { email: "" },
+    defaultValues: { email: "", acceptedTerms: false },
   });
 
   const onSubmit = async (values: FormValues) => {
@@ -254,17 +259,43 @@ export default function WaitlistForm() {
         </p>
       )}
 
-      {/* GDPR — privacy notice at point of collection */}
-      <p className="basis-full text-center font-sans text-[11px] leading-relaxed text-ink-muted">
-        By submitting, you accept our{" "}
-        <a
-          href="/legal/privacy"
-          className="underline transition-colors hover:text-ink"
-        >
-          Privacy Policy
-        </a>
-        . Email only. Unsubscribe anytime.
-      </p>
+      {/* GDPR consent — required checkbox below form (Bruce-style) */}
+      <div className="basis-full">
+        <Controller
+          control={control}
+          name="acceptedTerms"
+          render={({ field }) => (
+            <label className="flex cursor-pointer items-start gap-3 font-sans text-sm leading-relaxed text-ink-soft">
+              <input
+                type="checkbox"
+                checked={field.value}
+                onChange={(e) => field.onChange(e.target.checked)}
+                disabled={isSubmitting}
+                className="mt-0.5 h-4 w-4 flex-shrink-0 cursor-pointer rounded border-line accent-ink focus:outline-none focus:ring-2 focus:ring-accent disabled:opacity-60"
+              />
+              <span>
+                I accept the{" "}
+                <a
+                  href="/legal/privacy"
+                  className="underline transition-colors hover:text-ink"
+                >
+                  Privacy Policy
+                </a>{" "}
+                and agree to receive Experio waitlist emails.{" "}
+                <span className="text-ink-muted">Unsubscribe anytime.</span>
+              </span>
+            </label>
+          )}
+        />
+        {errors.acceptedTerms && (
+          <p
+            className="mt-2 pl-7 font-sans text-sm text-ink-soft"
+            role="alert"
+          >
+            {errors.acceptedTerms.message}
+          </p>
+        )}
+      </div>
     </form>
   );
 }
