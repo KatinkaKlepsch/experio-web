@@ -216,51 +216,51 @@ export default function WaitlistForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="mx-auto mt-10 flex max-w-xl flex-col gap-3 sm:flex-row"
+      className="mx-auto mt-10 max-w-xl"
       noValidate
     >
-      <Controller
-        control={control}
-        name="email"
-        render={({ field }) => (
-          <input
-            {...field}
-            type="email"
-            placeholder="you@email.com"
-            aria-label="Email"
-            autoComplete="email"
-            inputMode="email"
-            disabled={isSubmitting}
-            className="flex-1 rounded-full border border-line bg-card px-5 py-3.5 font-sans text-base text-ink placeholder-ink-muted/60 outline-none transition-colors focus:border-accent disabled:opacity-60"
-          />
-        )}
-      />
+      {/* Email input + submit button — own row */}
+      <div className="flex flex-col gap-3 sm:flex-row">
+        <Controller
+          control={control}
+          name="email"
+          render={({ field }) => (
+            <input
+              {...field}
+              type="email"
+              placeholder="you@email.com"
+              aria-label="Email"
+              autoComplete="email"
+              inputMode="email"
+              disabled={isSubmitting}
+              className="flex-1 rounded-full border border-line bg-card px-5 py-3.5 font-sans text-base text-ink placeholder-ink-muted/60 outline-none transition-colors focus:border-accent disabled:opacity-60"
+            />
+          )}
+        />
 
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="rounded-full bg-ink px-8 py-3.5 font-sans font-medium text-card transition-transform hover:scale-[1.01] disabled:cursor-wait disabled:opacity-60"
-      >
-        {isSubmitting ? "Sending…" : "Apply for access"}
-      </button>
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="rounded-full bg-ink px-8 py-3.5 font-sans font-medium text-card transition-transform hover:scale-[1.01] disabled:cursor-wait disabled:opacity-60"
+        >
+          {isSubmitting ? "Sending…" : "Apply for access"}
+        </button>
+      </div>
 
       {errors.email && (
-        <p
-          className="absolute mt-[60px] font-sans text-sm text-ink-soft sm:relative sm:mt-0 sm:basis-full"
-          role="alert"
-        >
+        <p className="mt-2 text-center font-sans text-sm text-ink-soft" role="alert">
           {errors.email.message}
         </p>
       )}
 
       {submitError && (
-        <p className="basis-full text-center font-sans text-sm text-ink-soft" role="alert">
+        <p className="mt-3 text-center font-sans text-sm text-ink-soft" role="alert">
           {submitError}
         </p>
       )}
 
-      {/* GDPR consent — required checkbox below form (Bruce-style) */}
-      <div className="basis-full">
+      {/* GDPR consent — required checkbox in its own block below form */}
+      <div className="mt-5 text-left">
         <Controller
           control={control}
           name="acceptedTerms"
@@ -274,24 +274,28 @@ export default function WaitlistForm() {
                 className="mt-0.5 h-4 w-4 flex-shrink-0 cursor-pointer rounded border-line accent-ink focus:outline-none focus:ring-2 focus:ring-accent disabled:opacity-60"
               />
               <span>
-                I accept the{" "}
+                I accept Experio&rsquo;s{" "}
+                <a
+                  href="/legal/terms"
+                  className="underline transition-colors hover:text-ink"
+                >
+                  Terms
+                </a>{" "}
+                and{" "}
                 <a
                   href="/legal/privacy"
                   className="underline transition-colors hover:text-ink"
                 >
                   Privacy Policy
                 </a>{" "}
-                and agree to receive Experio waitlist emails.{" "}
+                and agree to receive waitlist emails.{" "}
                 <span className="text-ink-muted">Unsubscribe anytime.</span>
               </span>
             </label>
           )}
         />
         {errors.acceptedTerms && (
-          <p
-            className="mt-2 pl-7 font-sans text-sm text-ink-soft"
-            role="alert"
-          >
+          <p className="mt-2 pl-7 font-sans text-sm text-ink-soft" role="alert">
             {errors.acceptedTerms.message}
           </p>
         )}
