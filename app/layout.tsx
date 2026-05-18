@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   title: "Experio — A curated cultural membership",
   description:
     "Book concerts, cinema, stand-up, museums, wine tastings, and workshops in Copenhagen. One monthly membership. No commitment.",
-  metadataBase: new URL("https://experio-web.pages.dev"),
+  metadataBase: new URL("https://myexperio.com"),
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

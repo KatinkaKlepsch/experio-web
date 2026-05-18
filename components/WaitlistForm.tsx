@@ -253,6 +253,18 @@ export default function WaitlistForm() {
           {submitError}
         </p>
       )}
+
+      {/* GDPR — privacy notice at point of collection */}
+      <p className="basis-full text-center font-sans text-[11px] leading-relaxed text-ink-muted">
+        By submitting, you accept our{" "}
+        <a
+          href="/legal/privacy"
+          className="underline transition-colors hover:text-ink"
+        >
+          Privacy Policy
+        </a>
+        . Email only. Unsubscribe anytime.
+      </p>
     </form>
   );
 }
