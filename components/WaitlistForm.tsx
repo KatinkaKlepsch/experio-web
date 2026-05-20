@@ -64,7 +64,7 @@ export default function WaitlistForm() {
 
     if (!supabaseUrl || !anonKey) {
       setSubmitError(
-        "Our form isn't configured correctly. Please email hello@myexperio.com.",
+        "Our form isn't configured correctly. Please email members@myexperio.com.",
       );
       return;
     }
@@ -205,7 +205,7 @@ export default function WaitlistForm() {
         </div>
 
         <p className="mt-8 text-center font-sans text-xs text-ink-muted">
-          Welcome email sent from <span className="text-ink">waitlist@myexperio.com</span> —
+          Welcome email sent from <span className="text-ink">members@myexperio.com</span> —
           check spam if you don't see it within a minute.
         </p>
       </div>

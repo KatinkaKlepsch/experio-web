@@ -492,10 +492,10 @@ export default function Home() {
                 Terms
               </a>
               <a
-                href="mailto:hello@myexperio.com"
+                href="mailto:members@myexperio.com"
                 className="transition-colors hover:text-ink"
               >
-                hello@myexperio.com
+                members@myexperio.com
               </a>
             </div>
           </div>

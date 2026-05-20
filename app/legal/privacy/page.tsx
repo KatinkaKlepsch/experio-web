@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   description: "How Experio collects, uses, and protects your personal data.",
 };
 
-const LAST_UPDATED = "18 May 2026";
+const LAST_UPDATED = "20 May 2026";
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
@@ -91,10 +91,16 @@ export default function PrivacyPolicy() {
           process.
         </Paragraph>
         <Paragraph>
-          <strong>Data controller:</strong> Experio is currently operated by Katinka
-          Schjeldrup Klepsch and Ida Nørgaard as co-founders, pre-incorporation. Once
-          we are incorporated as a Danish company, this section will be updated with
-          our official entity name and CVR number.
+          <strong>Data controller:</strong> Experio is currently operated by Ida
+          Nørgaard and Katinka Schjeldrup Klepsch as co-founders, pre-incorporation,
+          at the address:
+        </Paragraph>
+        <Paragraph>
+          Ved Hegnet 1, 3.tv, 2100 København Ø, Denmark
+        </Paragraph>
+        <Paragraph>
+          Once we are incorporated as a Danish company, this section will be updated
+          with our official entity name, CVR number, and registered address.
         </Paragraph>
 
         {/* ─── 2. WHAT WE COLLECT ─── */}
@@ -132,6 +138,12 @@ export default function PrivacyPolicy() {
           payment information, or any sensitive categories of data during the waitlist
           phase.
         </Paragraph>
+        <Paragraph>
+          Our hosting provider Cloudflare sets technically necessary cookies (such as{" "}
+          <code>__cflb</code> and <code>__cf_bm</code>) required for security and
+          performance. These do not track you across websites and, under the ePrivacy
+          Directive, do not require your consent.
+        </Paragraph>
 
         {/* ─── 3. PURPOSE AND LEGAL BASIS ─── */}
         <SectionTitle>3. Purpose and legal basis</SectionTitle>
@@ -142,26 +154,28 @@ export default function PrivacyPolicy() {
 
         <SubTitle>3.1 Waitlist signup and confirmation email</SubTitle>
         <Paragraph>
-          <strong>Purpose:</strong> To record your interest in Experio, send a welcome
-          email confirming your position, and notify you about launch milestones.
+          <strong>Purpose:</strong> To record your interest in Experio and send a
+          welcome email confirming your position on the waitlist.
         </Paragraph>
         <Paragraph>
           <strong>Legal basis:</strong> Your consent (GDPR Article 6(1)(a)). By
-          submitting your email via our waitlist form, you actively consent to receive
-          waitlist-related communications. You may withdraw consent at any time (see
-          Section 8).
+          submitting your email via our waitlist form, you consent to receive a welcome
+          email, a small number of pre-launch updates, and a launch invitation, as
+          described in section 3.2. You may withdraw consent at any time (see section
+          8).
         </Paragraph>
 
         <SubTitle>3.2 Pre-launch updates and product launch invitation</SubTitle>
         <Paragraph>
-          <strong>Purpose:</strong> To send you a small number of updates about
-          Experio&rsquo;s development before launch, and an invitation when the app
-          opens to first members.
+          <strong>Purpose:</strong> To send you updates about Experio&rsquo;s
+          development before launch, and an invitation when the app opens to first
+          members.
         </Paragraph>
         <Paragraph>
           <strong>Legal basis:</strong> Your consent (GDPR Article 6(1)(a)). This is
           part of the waitlist signup consent. We have committed to sending no more
-          than approximately three pre-launch emails.
+          than two pre-launch emails: a story in July and a launch invitation in
+          August 2026.
         </Paragraph>
 
         <SubTitle>3.3 Service security and infrastructure logs</SubTitle>
@@ -231,11 +245,21 @@ export default function PrivacyPolicy() {
           (EEA), specifically Resend (United States). When personal data is
           transferred outside the EEA, we rely on appropriate safeguards as required
           by GDPR, including Standard Contractual Clauses (SCCs) approved by the
-          European Commission.
+          European Commission. Details of Resend&rsquo;s transfer safeguards are
+          available in their{" "}
+          <a
+            href="https://resend.com/legal/dpa"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent underline hover:no-underline"
+          >
+            Data Processing Agreement
+          </a>
+          .
         </Paragraph>
         <Paragraph>
           You can request more information about the specific safeguards used by
-          contacting us at the address below.
+          contacting us using the details in section 10.
         </Paragraph>
 
         {/* ─── 6. PROFILING AND AUTOMATED DECISIONS ─── */}
@@ -264,10 +288,23 @@ export default function PrivacyPolicy() {
             their own retention policies (typically 7-30 days for security logs).
           </ListItem>
           <ListItem>
-            <strong>Email delivery metadata</strong> — retained by Resend for a
-            limited period as needed to troubleshoot delivery issues.
+            <strong>Email delivery metadata</strong> — retained by Resend as specified
+            in their{" "}
+            <a
+              href="https://resend.com/legal/privacy-policy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent underline hover:no-underline"
+            >
+              data retention policy
+            </a>
+            , typically up to 30 days for delivery logs.
           </ListItem>
         </ul>
+        <Paragraph>
+          In the event that Experio ceases operations before launch, all waitlist data
+          will be permanently deleted from our systems and from Resend within 30 days.
+        </Paragraph>
 
         {/* ─── 8. YOUR RIGHTS ─── */}
         <SectionTitle>8. Your rights</SectionTitle>
@@ -306,16 +343,23 @@ export default function PrivacyPolicy() {
         </ul>
 
         <Paragraph>
-          To unsubscribe from our emails at any time, simply reply to any email we
-          send with &ldquo;unsubscribe&rdquo; in the body. We will remove you from the
-          waitlist within 7 days. Alternatively, contact us using the details below.
+          To unsubscribe from our emails at any time, click the unsubscribe link in
+          the footer of any email we send. Your removal is recorded immediately.
+          Alternatively, contact us using the details in section 10.
         </Paragraph>
 
+        <SubTitle>Right to complain to the Danish Data Protection Agency</SubTitle>
         <Paragraph>
-          You also have the right to lodge a complaint with the Danish Data Protection
-          Agency (
-          <em>Datatilsynet</em>) if you believe we have not handled your personal
-          data in accordance with the law:{" "}
+          You have the right to lodge a complaint with the Danish Data Protection
+          Agency (<em>Datatilsynet</em>) if you believe we have not handled your
+          personal data in accordance with the law. You can reach them at{" "}
+          <a
+            href="mailto:postkasse@datatilsynet.dk"
+            className="text-accent underline hover:no-underline"
+          >
+            postkasse@datatilsynet.dk
+          </a>
+          {" "}or via{" "}
           <a
             href="https://www.datatilsynet.dk"
             target="_blank"
@@ -356,10 +400,10 @@ export default function PrivacyPolicy() {
         <Paragraph>
           <strong>Email:</strong>{" "}
           <a
-            href="mailto:hello@myexperio.com"
+            href="mailto:members@myexperio.com"
             className="text-accent underline hover:no-underline"
           >
-            hello@myexperio.com
+            members@myexperio.com
           </a>
         </Paragraph>
         <Paragraph>

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description: "The terms under which you use Experio's website and waitlist.",
 };
 
-const LAST_UPDATED = "18 May 2026";
+const LAST_UPDATED = "20 May 2026";
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
@@ -75,10 +75,15 @@ export default function TermsOfService() {
           Terms. If you do not agree, please do not use the Service.
         </Paragraph>
         <Paragraph>
-          Experio is currently operated by Katinka Schjeldrup Klepsch and Ida
-          Nørgaard as co-founders, pre-incorporation. Once we are incorporated as a
-          Danish company, this section will be updated with our official entity name
-          and CVR number.
+          Experio is currently operated by Ida Nørgaard and Katinka Schjeldrup
+          Klepsch as co-founders, pre-incorporation, at the address:
+        </Paragraph>
+        <Paragraph>
+          Ved Hegnet 1, 3.tv, 2100 København Ø, Denmark
+        </Paragraph>
+        <Paragraph>
+          Once we are incorporated as a Danish company, this section will be updated
+          with our official entity name, CVR number, and registered address.
         </Paragraph>
 
         {/* ─── 2. WHAT EXPERIO IS ─── */}
@@ -93,9 +98,11 @@ export default function TermsOfService() {
         <Paragraph>
           As of the date above, the Service is in <strong>pre-launch waitlist phase
           </strong>. The full membership product is expected to launch in September
-          2026. These Terms cover the pre-launch phase. When we launch the product,
-          additional terms specific to memberships, bookings, and payments will apply
-          and will be communicated to you before they take effect.
+          2026. These Terms cover the pre-launch phase. When the membership product
+          launches, additional terms covering cancellation rights, the 14-day right
+          of withdrawal applicable to Danish consumers under the Consumer Contracts
+          Act (<em>Forbrugeraftaleloven</em>), and payment conditions will apply and
+          will be presented to you before you subscribe.
         </Paragraph>
 
         {/* ─── 3. ELIGIBILITY ─── */}
@@ -116,24 +123,19 @@ export default function TermsOfService() {
             Receive a confirmation email with your position on the waitlist
           </ListItem>
           <ListItem>
-            Consent to receive a limited number of pre-launch updates from us
-            (approximately three emails before launch)
+            Consent to receive no more than two pre-launch emails from us: a story in
+            July and a launch invitation in August 2026
           </ListItem>
           <ListItem>
-            Will receive an invitation to join the Service when it launches
+            Will receive an invitation to join the Service when it launches in
+            September 2026
           </ListItem>
         </ul>
         <Paragraph>
-          You may unsubscribe at any time by replying to any email with the word
-          &ldquo;unsubscribe&rdquo;, or by contacting us at{" "}
-          <a
-            href="mailto:hello@myexperio.com"
-            className="text-accent underline hover:no-underline"
-          >
-            hello@myexperio.com
-          </a>
-          . Being on the waitlist does not guarantee acceptance into the Service when
-          it launches, nor any specific pricing or features.
+          You may unsubscribe at any time by clicking the unsubscribe link in the
+          footer of any email we send. Your removal is recorded immediately. Being on
+          the waitlist does not guarantee acceptance into the Service when it
+          launches, nor any specific pricing or features.
         </Paragraph>
 
         {/* ─── 5. ACCEPTABLE USE ─── */}
@@ -170,9 +172,9 @@ export default function TermsOfService() {
         {/* ─── 6. INTELLECTUAL PROPERTY ─── */}
         <SectionTitle>6. Intellectual property</SectionTitle>
         <Paragraph>
-          The Service, including its design, content, code, trademarks, and curatorial
-          choices, is the property of Experio and is protected by Danish, EU, and
-          international intellectual property laws.
+          The Service, including its design, content, code, trademarks, and the
+          selection and arrangement of content, is the property of Experio and is
+          protected by Danish, EU, and international intellectual property laws.
         </Paragraph>
         <Paragraph>
           You may view and interact with the Service for personal, non-commercial
@@ -182,8 +184,9 @@ export default function TermsOfService() {
         </Paragraph>
         <Paragraph>
           Venue names, logos, and content visible through the Service belong to the
-          respective venues. Their inclusion does not imply formal partnership unless
-          explicitly stated.
+          respective venues. During the pre-launch phase, their inclusion does not
+          imply formal partnership unless explicitly stated. Our venue partnerships
+          will be described in the full membership terms presented at launch.
         </Paragraph>
 
         {/* ─── 7. DISCLAIMERS ─── */}
@@ -212,7 +215,9 @@ export default function TermsOfService() {
         <Paragraph>
           Nothing in these Terms limits any liability that cannot be excluded under
           mandatory law, including liability for damages caused intentionally or by
-          gross negligence, and liability under Danish consumer protection law.
+          gross negligence, and liability under Danish consumer protection law. For
+          clarity, nothing in this section limits your statutory rights as a consumer
+          under Danish law.
         </Paragraph>
 
         {/* ─── 9. TERMINATION ─── */}
@@ -259,10 +264,10 @@ export default function TermsOfService() {
         <Paragraph>
           Before going to court, we encourage you to contact us first at{" "}
           <a
-            href="mailto:hello@myexperio.com"
+            href="mailto:members@myexperio.com"
             className="text-accent underline hover:no-underline"
           >
-            hello@myexperio.com
+            members@myexperio.com
           </a>{" "}
           so we can try to resolve the matter amicably.
         </Paragraph>
@@ -279,6 +284,19 @@ export default function TermsOfService() {
           </a>
           .
         </Paragraph>
+        <Paragraph>
+          You may also contact the Danish Consumer Complaints Board
+          (<em>Forbrugerklagenævnet</em>) at{" "}
+          <a
+            href="https://www.forbrug.dk/klagemuligheder"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent underline hover:no-underline"
+          >
+            forbrug.dk/klagemuligheder
+          </a>
+          .
+        </Paragraph>
 
         {/* ─── 12. CONTACT ─── */}
         <SectionTitle>12. Contact us</SectionTitle>
@@ -289,11 +307,14 @@ export default function TermsOfService() {
         <Paragraph>
           <strong>Email:</strong>{" "}
           <a
-            href="mailto:hello@myexperio.com"
+            href="mailto:members@myexperio.com"
             className="text-accent underline hover:no-underline"
           >
-            hello@myexperio.com
+            members@myexperio.com
           </a>
+        </Paragraph>
+        <Paragraph>
+          <strong>Address:</strong> Ved Hegnet 1, 3.tv, 2100 København Ø, Denmark
         </Paragraph>
 
         {/* Footer back link */}
