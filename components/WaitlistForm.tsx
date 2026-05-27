@@ -37,9 +37,9 @@ type SuccessState = {
 };
 
 const SHARE_URL = "https://myexperio.com";
-const INSTAGRAM_URL = "https://instagram.com/experio"; // TODO replace once handle confirmed
-const FACEBOOK_URL = "https://facebook.com/experio";   // TODO replace once page exists
-const LINKEDIN_URL = "https://linkedin.com/company/experio"; // TODO replace once page exists
+const INSTAGRAM_URL = "https://www.instagram.com/experioCPH";
+const FACEBOOK_URL = "https://www.facebook.com/profile.php?id=61589233517764";
+const LINKEDIN_URL = "https://www.linkedin.com/company/myexperio/about/";
 
 export default function WaitlistForm() {
   const [success, setSuccess] = useState<SuccessState | null>(null);

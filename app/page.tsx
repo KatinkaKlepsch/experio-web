@@ -74,9 +74,9 @@ export default function Home() {
             <Wordmark size="text-xl" />
           </a>
           <div className="flex items-center gap-4">
-            {/* Instagram — placeholder handle, update when account is live */}
+            {/* Instagram — @experioCPH */}
             <a
-              href="https://instagram.com/experio"
+              href="https://www.instagram.com/experioCPH"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Follow Experio on Instagram"
@@ -381,7 +381,7 @@ export default function Home() {
           {/* Instagram CTA — visible Follow-button before the form */}
           <div className="mt-6 flex justify-center">
             <a
-              href="https://instagram.com/experio"
+              href="https://www.instagram.com/experioCPH"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Follow Experio on Instagram"
