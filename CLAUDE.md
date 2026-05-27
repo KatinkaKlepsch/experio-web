@@ -79,7 +79,7 @@ Mirror `Experio/docs/CVI.md` — visual identity must be consistent across both 
 - Both repos read from same Supabase DB — coordinate schema changes
 
 ### Contact emails (use these in any marketing copy)
-- **Venues:** `venues@myexperio.com` — canonical venue-facing channel
+- **Venues:** `partnerships@myexperio.com` — canonical venue-facing channel
 - **Personal:** `katinkaklepsch@gmail.com` — internal/dev only, do NOT surface in marketing copy
 
 ### Copy voice (per sister-repo guidance)
