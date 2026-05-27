@@ -507,7 +507,7 @@ export default function Home() {
                 Made in Copenhagen · Est. 2026
               </p>
             </div>
-            <div className="flex flex-col gap-2 font-sans text-sm text-ink-soft sm:flex-row sm:gap-6">
+            <div className="flex flex-col gap-2 font-sans text-sm text-ink-soft sm:flex-row sm:flex-wrap sm:gap-x-6 sm:gap-y-2">
               <a href="#waitlist" className="transition-colors hover:text-ink">
                 Apply for access
               </a>
@@ -521,7 +521,13 @@ export default function Home() {
                 href="mailto:members@myexperio.com"
                 className="transition-colors hover:text-ink"
               >
-                members@myexperio.com
+                <span className="text-ink-muted">Members ·</span> members@myexperio.com
+              </a>
+              <a
+                href="mailto:partnerships@myexperio.com"
+                className="transition-colors hover:text-ink"
+              >
+                <span className="text-ink-muted">Partners ·</span> partnerships@myexperio.com
               </a>
             </div>
           </div>
