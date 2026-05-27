@@ -375,11 +375,11 @@ export default function Home() {
             Join the <span className="italic text-accent">waitlist</span>.
           </h2>
           <p className="mx-auto mt-6 max-w-lg font-sans text-base leading-relaxed text-ink-soft">
-            Just your email. Follow along on Instagram while we build it.
+            Just your email. Follow along while we build it.
           </p>
 
-          {/* Instagram CTA — visible Follow-button before the form */}
-          <div className="mt-6 flex justify-center">
+          {/* Social CTAs — Instagram, Facebook, LinkedIn */}
+          <div className="mt-6 flex justify-center gap-3">
             <a
               href="https://www.instagram.com/experioCPH"
               target="_blank"
@@ -392,7 +392,33 @@ export default function Home() {
                 <circle cx="12" cy="12" r="4" />
                 <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none" />
               </svg>
-              Follow on Instagram
+              Instagram
+            </a>
+            <a
+              href="https://www.facebook.com/profile.php?id=61589233517764"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow Experio on Facebook"
+              className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-5 py-2.5 font-sans text-sm font-medium text-ink transition-colors hover:border-accent hover:text-accent"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" role="img" aria-hidden="true">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg>
+              Facebook
+            </a>
+            <a
+              href="https://www.linkedin.com/company/myexperio/about/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow Experio on LinkedIn"
+              className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-5 py-2.5 font-sans text-sm font-medium text-ink transition-colors hover:border-accent hover:text-accent"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" role="img" aria-hidden="true">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+              LinkedIn
             </a>
           </div>
 
