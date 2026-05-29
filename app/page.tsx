@@ -529,6 +529,12 @@ export default function Home() {
               >
                 <span className="text-ink-muted">Partners ·</span> partnerships@myexperio.com
               </a>
+              <a
+                href="mailto:contact@myexperio.com"
+                className="transition-colors hover:text-ink"
+              >
+                <span className="text-ink-muted">Other ·</span> contact@myexperio.com
+              </a>
             </div>
           </div>
           <p className="mt-10 font-sans text-xs text-ink-muted">
